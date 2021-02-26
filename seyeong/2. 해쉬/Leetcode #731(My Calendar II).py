@@ -11,6 +11,8 @@ class MyCalendarTwo:
             if ms < me:
                 return False
             
+
+
         for s, e in self.cal:
             ms = max(start, s)
             me = min(end, e)

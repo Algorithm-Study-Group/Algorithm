@@ -1,0 +1,91 @@
+import heapq
+def solution(info, query):
+    answer = []
+    heap = []
+    for idx, i in enumerate(info):
+        # info[idx] = list(i.split(" "))
+        lan, job, exp, food, score = list(i.split(" "))
+        heapq.heappush(heap, [-int(score), lan, job, exp, food])
+    # print(info)
+        
+        
+    for idx, q in enumerate(query):
+        lan, _, job, _, exp, _, food, score = q.split(" ")
+        # heapq.heappush(heap, [-int(score), lan, job, exp, food, score])
+        answer.append([-int(score), lan, job, exp, food])
+    
+    # print(heap, answer)
+    for idx, ans in enumerate(answer):
+        cnt = 0
+        
+        temp = heap[:]
+        for i in range(len(temp)):
+            person = heapq.heappop(temp)
+            check = True
+            if -ans[0] <= -person[0]:
+                # print(-ans[0] , -person[0])
+                for j in range(1, 5):
+                    # print(ans, person)
+                    if ans[j] == '-':
+                        continue
+                    elif ans[j] == person[j]:
+                        continue
+                    elif ans[j] != person[j]:
+                        check = False
+                        break
+                # print(check)
+            else:
+                break
+                
+            if check:
+                cnt += 1
+            # print(ans, cnt)
+            # else:
+            #     break
+                
+        answer[idx] = cnt
+        # print(answer)
+    
+    # for q in sorted(query, key=lambda x: x[4], reverse=True):
+    #     print(q)
+    # print(heap)
+    # print(answer)
+    # print(heapq.heappop(heap))
+    # print(query)
+    return answer
+
+
+
+    class Node:
+    
+    def __init__(self, c):
+        self.val = c
+        self.score = 0
+        self.children = {}
+
+class Trie:
+    
+    def __init__(self):
+        self.head = Node(None)
+        
+    def add(info):
+        cur_node = self.head
+        
+        for idx, i in enumerate(info):
+            if i in cur_node.children:
+                cur_node.children[char] = Node[Char]
+            
+        
+
+def solution(info, query):
+    answer = []
+    
+    
+    
+    people = {}
+    for i in info:
+        a = list(i.split(" "))
+        for i in range(len(a)-1):
+            people[a[i]] = a[i+1]
+        print(people)
+    return answer

@@ -1,5 +1,6 @@
 
 def find(x):
+    print("x :", x, "s[x]:", s[x])
     if x == s[x]:
         return x
     
@@ -7,6 +8,7 @@ def find(x):
     return s[x]
 
 def union(x, y):
+    
     x = find(x)
     y = find(y)
     if x== y:
@@ -30,5 +32,6 @@ for i in range(t):
             s[b] = b
             cnt[b] = 1
         union(a, b)
-        print(cnt[s[a]])
-        print(s)
+        # print(cnt[s[a]])
+        # print(s)
+    print(s, cnt)

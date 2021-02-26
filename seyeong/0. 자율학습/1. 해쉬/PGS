@@ -1,0 +1,18 @@
+import collections 
+
+def solution(genres, plays):
+    answer = []
+    
+    cnt = collections.defaultdict(list)
+    
+    l = len(plays)
+    a = collections.defaultdict(int)
+    
+    for i in range(l):
+        if cnt[genres[i]]:
+            # cnt[genres[i]].append([cnt[genres[i]][-1][0] + plays[i] ,plays[i], i])
+            cnt[genres[i]][0] += plays[i]
+            cnt[genres[i]].append([plays[i], i])
+        else:
+            cnt[genres[i]].append([plays[i]])
+            cnt[genres[i]].append([plays[i], i])
