@@ -15,6 +15,10 @@ for i in range(h):
 
 pos = [[1, 0, 0], [-1, 0, 0], [0, 0, -1], [0, 0, 1], [0, -1, 0], [0, 1, 0]]
 
+dx = [0, 0, 0, 0, -1, 1]
+dy = [0, 0, -1, 1, 0, 0]
+dz = [1, -1, 0, 0, 0, 0]
+
 def bfs(tomato):
     
     cnt = 0 
@@ -38,7 +42,7 @@ def bfs(tomato):
                                 if tomato[next_h][next_n][next_m] == 0:
                                     if [next_h, next_n, next_m] not in stack:
                                         stack.append([next_h, next_n, next_m])
-                                    print(cnt, stack)
+                                    print(cnt, stack)   
                     elif tomato[i][j][k] == 0:
                         possible = False
         if not stack:
