@@ -1,9 +1,9 @@
-import sys, heapq
+import sys, heapq, itertools
 
 n = int(sys.stdin.readline().strip())
 m = int(sys.stdin.readline().strip())
 
-max_value = 100000
+max_value = sys.maxsize
 graph = {}
 # heap = []
 
@@ -35,7 +35,7 @@ def Dijkstra(Graph, dep):
     while queue:
         cur_dist, cur_node = heapq.heappop(queue)
         # 저장된 최단거리가 더 작은 경우
-        print(cur_dist, cur_node)
+        
         if distances[cur_node] < cur_dist:
             continue
         if graph.get(cur_node) is not None:
@@ -50,5 +50,7 @@ def Dijkstra(Graph, dep):
     print(distances[arr])
     print(len(prev[arr]))
     print(*prev[arr])
+
+
 Dijkstra(graph, dep)
 # print(graph)

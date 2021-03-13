@@ -9,10 +9,9 @@ s, t = map(int, sys.stdin.readline().split())
 # 4. 외에는 모두 -1 출력
 
 def bfs(start, target):
+    MAX = 10e9
     
     
-    if target == 1:
-        return '/'
     
     if target == 0:
         return '-'
@@ -20,7 +19,11 @@ def bfs(start, target):
     if start == target:
         return 0
 
+    if target == 1:
+        return '/'
+
     values = set()
+    values.add(start)
     dq = collections.deque()
     dq.append([start, ''])
 
@@ -30,14 +33,21 @@ def bfs(start, target):
         num, path = dq.popleft()
         if num == target:
             return path
-        if num in values:
-            continue
-        values.add(num)
-        if num*num <= target:
-            dq.append([num*num, path+'*'])
-        if num*2 <= target:
-            dq.append([num*2, path+'+'])
-        dq.append([1, path+'/'])
+        num2 = num * num
+        if 0 <= num2 <= MAX and num2 not in values:
+            dq.append([num2, path+'*'])
+            values.add(num2)
+        
+        num2 = num + num
+        if 0 <= num2 <= MAX and num2 not in values:
+            dq.append([num2, path+'+'])
+            values.add(num2)
+
+        num2 = 1
+        if num2 not in values:
+            dq.append([num2, path+'/'])
+            values.add(num2)
+        
     return -1
 
 
@@ -47,7 +57,7 @@ def bfs(start, target):
     
     #     while dq:
     #         num, path = dq.popleft()
-    #         if num == target:
+    #         if num == MAX:
     #             return path
     #         if num in values or num > target:
     #             continue

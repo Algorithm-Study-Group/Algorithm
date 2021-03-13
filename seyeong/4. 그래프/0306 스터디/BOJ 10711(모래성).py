@@ -22,7 +22,7 @@ def bfs(s1, s2):
     else:
         return False
 
-ans = 0
+ans = 0 
 while True:
     answer = []
     ans += 1

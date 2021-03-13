@@ -28,7 +28,7 @@ def bfs(start, target):
         a = counter[2] # 3 
         b = counter[start] # 2
         
-
+        if int(math.log(b))
         if b == 0:
             temp = ''
             result += '/+'
