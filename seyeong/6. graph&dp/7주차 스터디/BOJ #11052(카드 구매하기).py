@@ -6,28 +6,18 @@ n = int(input().strip())
 
 cost = list(map(int, input().split()))
 
-heap = []
+cost.insert(0, 0)
 
-for cnt, c in enumerate(cost):
-    ratio = c / (cnt+1)
-    heapq.heappush(heap, [-ratio, cnt+1, -c])
+dp = [0 for _ in range(n+1)]
 
-# print(heap)
-answer = 0
-while heap:
-    if n == 0:
-        break
-    
-    r, c, p = heapq.heappop(heap)
-    r = -r
-    
-    p = -p
-    
-        
-    # print(r,c)
-    
-    while n - c >= 0:
-        answer += p
-        n -= c
+dp[1] = cost[1]
 
-print(int(answer))
+# print(cost)
+
+for i in range(2, n+1):
+    temp = 0 
+    for j in range(0, i+1):
+        temp = max(temp, dp[j] + cost[i-j])
+    dp[i] = temp
+
+print(dp)
